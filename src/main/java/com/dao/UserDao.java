@@ -1,13 +1,18 @@
 package com.dao;
 
+
+import java.util.List;
+
 import com.model.User;
 
-public interface UserDao {
+public interface UserDao{
 	
-	public User addUser(String name, String password);
+	public void addUser(User user);
 	
-	public String updateUser(String name, String password);
+	public List<User> findById(int id);
 	
-	public User deleteUser(int id);
+	public void updateUser(int id, User user);
+	
+	public void deleteUser(int id);
 
 }

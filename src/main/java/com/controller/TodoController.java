@@ -41,13 +41,6 @@ public class TodoController {
 		return "list-todos";
 	}
 	
-	@GetMapping("/add-todo")
-	public String showAddTodoPage(ModelMap model) {
-		model.addAttribute("todo", new Todo(0, (String) model.get("name"),
-				"Default Desc", new Date(), false));
-		return "todo";
-	}
-	
 	@GetMapping("/delete-todo")
 	public String deleteTodo(@RequestParam int id) {
 		todoservice.deleteTodo(id);
@@ -74,6 +67,13 @@ public class TodoController {
 		todoservice.updateTodo(todo);
 
 		return "redirect:/list-todos";
+	}
+	
+	@GetMapping("/add-todo")
+	public String showAddTodoPage(ModelMap model) {
+		model.addAttribute("todo", new Todo(0, (String) model.get("name"),
+				"Default Desc", new Date(), false));
+		return "todo";
 	}
 	
 	@PostMapping("/add-todo")

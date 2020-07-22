@@ -5,12 +5,20 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import com.dao.UserDao;
 import com.model.Todo;
+import com.model.User;
 
+@Component
 @Service
 public class TodoService {
+	
+	@Autowired
+	UserDao userdao;
 	
     private static List<Todo> todos = new ArrayList<Todo>();
     private static int todoCount = 3;

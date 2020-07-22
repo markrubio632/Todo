@@ -1,16 +1,15 @@
 package com.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.dao.UserDaoImpl;
 import com.server.LoginService;
 
 @Controller
@@ -19,6 +18,9 @@ public class LoginController {
 
 	@Autowired
 	LoginService loginservice;
+	
+	@Autowired
+	UserDaoImpl userdaoimpl;
 
 	@GetMapping("/login")
 	public String showLoginPage(ModelMap model) {
@@ -34,7 +36,8 @@ public class LoginController {
 			model.put("errorMessage", "Invalid Credentials");
 			return "login";
 		}
-
+		
+		
 		model.put("name", name);
 		model.put("password", password);
 

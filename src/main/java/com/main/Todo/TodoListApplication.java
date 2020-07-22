@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
 @ComponentScan(basePackages="com")
 @EntityScan(basePackages="com.model")
-@EnableJpaRepositories("com.main.Todo")
+@EnableJpaRepositories("com.crudapp")
 public class TodoListApplication {
 
 	public static void main(String[] args) {

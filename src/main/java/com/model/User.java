@@ -6,8 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 @Entity
-@Table(name="todo")
+@Table(name="TO_DO")
 public class User {
 	
 	@Id
@@ -17,6 +19,13 @@ public class User {
 	private String name;
 	private String password;
 	
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getName() {
 		return name;
 	}
@@ -29,8 +38,10 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public User(String name, String password) {
+	@Autowired
+	public User(int id, String name, String password) {
 		super();
+		this.id = id;
 		this.name = name;
 		this.password = password;
 	}
