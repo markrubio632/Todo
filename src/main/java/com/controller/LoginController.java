@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.dao.UserDaoImpl;
+import com.model.User;
 import com.server.LoginService;
 
 @Controller
@@ -18,7 +19,7 @@ public class LoginController {
 
 	@Autowired
 	LoginService loginservice;
-	
+
 	@Autowired
 	UserDaoImpl userdaoimpl;
 
@@ -36,10 +37,12 @@ public class LoginController {
 			model.put("errorMessage", "Invalid Credentials");
 			return "login";
 		}
-		
-		
+
 		model.put("name", name);
 		model.put("password", password);
+		
+		//this line adds the user into the DB
+		userdaoimpl.addUser(new User(0,name, password));
 
 		return "welcome";
 	}
