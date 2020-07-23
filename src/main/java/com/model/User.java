@@ -49,6 +49,9 @@ public class User {
 	public String toString() {
 		return "User [name=" + name + ", password=" + password + "]";
 	}
+	public User() {
+		super();
+	}
 	
 	
 

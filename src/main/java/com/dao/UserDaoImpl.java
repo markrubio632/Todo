@@ -34,4 +34,11 @@ public class UserDaoImpl implements UserDao{
 		
 	}
 
+	@Override
+	public List<User> findByAll() {
+		// TODO Auto-generated method stub
+		List<User> uList = (List<User>) crudrepo.findAll();
+		return uList;
+	}
+
 }

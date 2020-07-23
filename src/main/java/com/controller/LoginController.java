@@ -40,9 +40,9 @@ public class LoginController {
 
 		model.put("name", name);
 		model.put("password", password);
-		
-		//this line adds the user into the DB
-		userdaoimpl.addUser(new User(0,name, password));
+
+		// this line adds the user into the DB
+		userdaoimpl.addUser(new User(0, name, password));
 
 		return "welcome";
 	}

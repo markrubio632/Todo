@@ -22,7 +22,7 @@ import com.server.TodoService;
 @Controller
 @SessionAttributes("name")
 public class TodoController {
-	
+
 	@Autowired
 	TodoService todoservice;
 
@@ -30,33 +30,31 @@ public class TodoController {
 	public void initBinder(WebDataBinder binder) {
 		// Date - dd/MM/yyyy
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		binder.registerCustomEditor(Date.class, new CustomDateEditor(
-				dateFormat, false));
+		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
 	}
-	
+
 	@GetMapping("/list-todos")
 	public String showTodos(ModelMap model) {
 		String name = (String) model.get("name");
 		model.put("todos", todoservice.retrieveTodos(name));
 		return "list-todos";
 	}
-	
+
 	@GetMapping("/delete-todo")
 	public String deleteTodo(@RequestParam int id) {
 		todoservice.deleteTodo(id);
 		return "redirect:/list-todos";
 	}
-	
+
 	@GetMapping("/update-todo")
 	public String showUpdateTodoPage(@RequestParam int id, ModelMap model) {
 		Todo todo = todoservice.retrieveTodo(id);
 		model.put("todo", todo);
 		return "todo";
 	}
-	
+
 	@PostMapping("/update-todo")
-	public String updateTodo(ModelMap model, @Validated Todo todo,
-			BindingResult result) {
+	public String updateTodo(ModelMap model, @Validated Todo todo, BindingResult result) {
 
 		if (result.hasErrors()) {
 			return "todo";
@@ -68,14 +66,13 @@ public class TodoController {
 
 		return "redirect:/list-todos";
 	}
-	
+
 	@GetMapping("/add-todo")
 	public String showAddTodoPage(ModelMap model) {
-		model.addAttribute("todo", new Todo(0, (String) model.get("name"),
-				"Default Desc", new Date(), false));
+		model.addAttribute("todo", new Todo(0, (String) model.get("name"), "Default Desc", new Date(), false));
 		return "todo";
 	}
-	
+
 	@PostMapping("/add-todo")
 	public String addTodo(ModelMap model, @Validated Todo todo, BindingResult result) {
 
@@ -83,9 +80,14 @@ public class TodoController {
 			return "todo";
 		}
 
-		todoservice.addTodo((String) model.get("name"), todo.getDesc(), todo.getTargetDate(),
-				false);
+		todoservice.addTodo((String) model.get("name"), todo.getDesc(), todo.getTargetDate(), false);
 		return "redirect:/list-todos";
 	}
 	
+	/*
+	 * @GetMapping("/user") public String getUsers() { return "user"; }
+	 */
+	
+	
+
 }
