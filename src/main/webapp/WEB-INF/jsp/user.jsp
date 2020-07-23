@@ -11,39 +11,32 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%-- <form>
-		<div class="container">
-
-			<table class="table table-striped">
-
-				<caption>current registered users are:</caption>
-
-				<thead>
+	<form:form method="post" modelAttribute="user">
+		<div align="center">
+			<table border="1">
+				<caption>
+					<h2>List of users</h2>
+				</caption>
+				<tr>
+					<th>ID</th>
+					<th>Name</th>
+					<th>Password</th>
+				</tr>
+				<c:forEach var="user" items="${userList.rows}">
 					<tr>
-						<th>Id Number:</th>
-						<th>Username:</th>
+						<td><c:out value="${user.id}" /></td>
+						<td><c:out value="${user.name}" /></td>
+						<td><c:out value="${user.password}" /></td>
+						<%-- <td><a type="button" class="btn btn-update" href="/update-user?id=${user.id}">Update</a></td>
+						<td><a type="button" class="btn btn-delete" href="/update-delete?id=${user.id}">Delete</a></td> --%>
 					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${uList}" var="user">
-					<tr>
-						<td>${user.id}</td>
-						<td>${user.name}</td>
-						<td><a type="button" class="btn btn-update" href="/update-user?id=${user.id}">Update</a></td>
-						<td><a type="button" class="btn btn-delete" href="/update-delete?id=${user.id}">Delete</a></td>
-					</tr>
-					
-					</c:forEach>
-				
-				</tbody>
-
+				</c:forEach>
 			</table>
-
 		</div>
 
-	</form> --%>
+	</form:form>
 
-	<form>
+	<%-- <form>
 		<sql:setDataSource var="myDB" driver="com.mysql.jdbc.Driver"
 			url="jdbc:mysql://localhost:3306/test" user="root" password="root" />
 
@@ -67,7 +60,7 @@
 				</c:forEach>
 			</table>
 		</div>
-	</form>
+	</form> --%>
 
 </body>
 </html>

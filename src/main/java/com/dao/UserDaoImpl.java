@@ -10,20 +10,20 @@ import com.crudapp.CRUDRepo;
 import com.model.User;
 
 @Component
-public class UserDaoImpl implements UserDao{
-	
+public class UserDaoImpl implements UserDao {
+
 	@Autowired
 	CRUDRepo crudrepo;
 	
 	public void addUser(User user) {
 		crudrepo.save(user);
 	}
-	
+
 	public List<User> findById(int id) {
 		Optional<User> user1 = crudrepo.findById(id);
-		return user1.isPresent() ? (List)user1.get() : null;
+		return user1.isPresent() ? (List) user1.get() : null;
 	}
-	
+
 	public void deleteUser(int id) {
 		crudrepo.deleteById(id);
 	}
@@ -31,14 +31,16 @@ public class UserDaoImpl implements UserDao{
 	@Override
 	public void updateUser(int id, User user) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
-	public List<User> findByAll() {
+	public List<User> findList() {
 		// TODO Auto-generated method stub
-		List<User> uList = (List<User>) crudrepo.findAll();
-		return uList;
+
+		List<User> userList = (List<User>) crudrepo.findAll();
+		return userList;
+
 	}
 
 }

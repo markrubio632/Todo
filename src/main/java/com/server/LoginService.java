@@ -16,8 +16,10 @@ public class LoginService {
 		return name.equalsIgnoreCase(name) && password.equalsIgnoreCase(password);
 	}
 	
-	public static List<User> users = new ArrayList<User>();
-	
+	/*
+	 * public List<User> getUsers(){ List<User> userList = new ArrayList<User>();
+	 * userList.get(0); return userList; }
+	 */
 	
 	
 }

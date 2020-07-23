@@ -83,11 +83,5 @@ public class TodoController {
 		todoservice.addTodo((String) model.get("name"), todo.getDesc(), todo.getTargetDate(), false);
 		return "redirect:/list-todos";
 	}
-	
-	/*
-	 * @GetMapping("/user") public String getUsers() { return "user"; }
-	 */
-	
-	
 
 }
