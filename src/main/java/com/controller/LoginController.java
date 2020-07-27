@@ -7,7 +7,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.dao.UserDaoImpl;
@@ -43,7 +42,8 @@ public class LoginController {
 		model.put("password", password);
 
 		// this line adds the user into the DB
-		userdaoimpl.addUser(new User(1, name, password));
+		//integer is 0 so that each new user added will increment new integer to the record
+		userdaoimpl.addUser(new User(0, name, password));
 
 		return "welcome";
 	}

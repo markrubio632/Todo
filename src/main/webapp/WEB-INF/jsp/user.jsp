@@ -22,13 +22,15 @@
 					<th>Name</th>
 					<th>Password</th>
 				</tr>
-				<c:forEach var="user" items="${userList.rows}">
+				<c:forEach var="user" items="${listOfUsers}">
 					<tr>
 						<td><c:out value="${user.id}" /></td>
 						<td><c:out value="${user.name}" /></td>
 						<td><c:out value="${user.password}" /></td>
-						<%-- <td><a type="button" class="btn btn-update" href="/update-user?id=${user.id}">Update</a></td>
-						<td><a type="button" class="btn btn-delete" href="/update-delete?id=${user.id}">Delete</a></td> --%>
+						<td><a type="button" class="btn btn-update"
+							href="/update-user?id=${user.id}">Update</a></td>
+						<td><a type="button" class="btn btn-delete"
+							href="/update-delete?id=${user.id}">Delete</a></td>
 					</tr>
 				</c:forEach>
 			</table>
