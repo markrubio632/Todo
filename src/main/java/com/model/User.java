@@ -8,6 +8,7 @@ import javax.persistence.Table;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+
 @Entity
 @Table(name="TO_DO")
 public class User {
@@ -16,6 +17,7 @@ public class User {
 	@GeneratedValue
 	@Column(name="Id")
 	private int id;
+	
 	private String name;
 	private String password;
 	
@@ -53,7 +55,4 @@ public class User {
 	public User() {
 		super();
 	}
-	
-	
-
 }

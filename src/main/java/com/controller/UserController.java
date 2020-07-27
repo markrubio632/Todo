@@ -2,6 +2,7 @@ package com.controller;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.crudapp.CRUDRepo;
 import com.dao.UserDaoImpl;
 import com.model.User;
+import com.server.UserService;
 
 @Controller
 @SessionAttributes("name")
@@ -21,6 +23,9 @@ public class UserController {
 
 	@Autowired
 	UserDaoImpl userdaoimpl;
+	
+	@Autowired
+	UserService userservice;
 
 	@Autowired
 	CRUDRepo repo;
@@ -36,12 +41,36 @@ public class UserController {
 	//manipulates the current user in the model (from the get) and puts new info in that model
 	@PostMapping("/register")
 	public String registerRedirect(ModelMap model, User user) {
+		
+		
+		
 		model.put("user", user);
 		userdaoimpl.addUser(user);
-		
+		/*
+		 * if (userservice.registrationSuccessful(user)){
+		 * 
+		 * }
+		 */
 		//should be something to check if user regis was succ with a timed redirect to other page
-		//return "redirect:/~";
-		return "redirect:/user";
+		
+		return "redirect:/registrationStatus";
+	}
+	
+	@GetMapping("registrationStatus")
+	public String regisStatus(ModelMap model, User user, String id) {
+		// pull list of users, find by name, pull name, insert onto model
+		
+		//this should pull all users in the list
+		List<User> listOfUsers = userdaoimpl.findList();
+		//places users into list
+		model.put("listOfUsers", listOfUsers);
+		System.out.println(listOfUsers);
+		//pulls attribute(s) //this current statement doesnt work
+		model.getAttribute(id);
+		//this evaluates to null in console
+		System.out.println(model.get(id));
+		
+		return "registrationStatus";
 	}
 
 	@GetMapping("/user")

@@ -32,9 +32,13 @@
 				</tr>
 			</table>
 			<!-- insert if statement here -->
-			<c:if test="${name == null && password}">
-				<c:out value=""></c:out>
+			<!-- i think we need to request params here? -->
+			<%-- <c:if test="${name != null && password != null}">
+				<c:out value="User successfully created, redirecting..."></c:out>
 			</c:if>
+			<c:if test="${name == null && password == null}">
+				<c:out value="User did not create successfully, please enter values in both boxes. refreshing in..."></c:out>
+			</c:if> --%>
 		</div>
 		<div>
 		<input type="submit" id="btn sub">
